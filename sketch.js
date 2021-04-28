@@ -35,7 +35,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , { isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {"restitution": 0.5, isStatic:true});
 	World.add(world, packageBody);
 
 	
@@ -49,18 +49,16 @@ function setup() {
 
 	var options={isStatic:true}
 
-	 boxLeftSprite=createSprite(boxPosition,boxY,20,140);
-	 boxLeftSprite.shapeColor="red";
+	 
+	 
 	 boxLeftBody=Bodies.rectangle(boxPosition, boxY, 20, 100,options);
 	World.add(world,boxLeftBody);
 
-	  boxBase=createSprite(400,670,200,20);
-     boxBase.shapeColor="red";	  
+	  	  
 	boxBaseBody=Bodies.rectangle(boxPosition+100,boxY+40,200,20,options);
 	World.add(world,boxBaseBody);
 
-	boxRightSprite=createSprite(boxPosition+200,boxY,20,140);
-	boxRightSprite.shapeColor="red";
+	
 	boxRightBody=Bodies.rectangle(boxPosition+200,boxY,20,100,options);
 	World.add(world,boxRightBody);
 	Engine.run(engine);
@@ -71,8 +69,14 @@ function setup() {
 
 function draw() 
 {
-  rectMode(CENTER);
+  
+  
   background("black");
+  rectMode(CENTER);
+  fill("Red")
+  rect(boxLeftBody.position.x, boxLeftBody.position.y, 20, 100)
+  rect(boxRightBody.position.x, boxRightBody.position.y, 20, 100)
+  rect(boxBaseBody.position.x, boxBaseBody.position.y, 200, 20)
   packageSprite.x= packageBody.position.x ;
   packageSprite.y= packageBody.position.y;
   
